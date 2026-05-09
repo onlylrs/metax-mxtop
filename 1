@@ -1,0 +1,24 @@
+tui.py 13896 chars, 407 lines
+mouse.py 3872 chars, 118 lines
+displayable.py 9298 chars, 289 lines
+keybinding.py 13863 chars, 418 lines
+libcurses.py 10218 chars, 333 lines
+Traceback (most recent call last):
+  File "/tmp/fetch2.py", line 12, in <module>
+    resp = urllib.request.urlopen(url)
+  File "/ssddata/hjiangaz/richie/uv-python/cpython-3.13.11-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/ssddata/hjiangaz/richie/uv-python/cpython-3.13.11-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/ssddata/hjiangaz/richie/uv-python/cpython-3.13.11-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/ssddata/hjiangaz/richie/uv-python/cpython-3.13.11-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/ssddata/hjiangaz/richie/uv-python/cpython-3.13.11-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/ssddata/hjiangaz/richie/uv-python/cpython-3.13.11-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: Not Found
