@@ -31,6 +31,17 @@ def format_float(value: float | None, unit: str) -> str:
     return "N/A" if value is None else f"{value:.0f}{unit}"
 
 
+def format_duration(value: float | None) -> str:
+    if value is None:
+        return "N/A"
+    seconds = max(0, int(value))
+    hours, remainder = divmod(seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    if hours:
+        return f"{hours}:{minutes:02d}:{seconds:02d}"
+    return f"{minutes}:{seconds:02d}"
+
+
 def format_bar(value: float | None, width: int = 12) -> str:
     if width <= 0:
         return ""

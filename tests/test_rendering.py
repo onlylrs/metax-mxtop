@@ -39,6 +39,26 @@ def test_render_once_includes_gpu_and_process_rows():
     assert "53978MiB" in output
 
 
+def test_render_once_includes_process_runtime():
+    frame = FrameSnapshot(
+        devices=[],
+        processes=[
+            ProcessSnapshot(
+                gpu_index=0,
+                pid=967305,
+                gpu_memory_bytes=53978 * 1024**2,
+                runtime_seconds=3723,
+                command="python train.py",
+            )
+        ],
+    )
+
+    output = render_once(frame, use_color=False)
+
+    assert "TIME" in output
+    assert "1:02:03" in output
+
+
 def test_format_bar_clamps_and_fills_blocks():
     assert format_bar(50, width=10) == "█████░░░░░"
     assert format_bar(120, width=4) == "████"

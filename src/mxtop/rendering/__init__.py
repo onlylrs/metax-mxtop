@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from mxtop.formatting import ellipsize, format_bar, format_bytes, format_float, format_mib, format_percent
+from mxtop.formatting import ellipsize, format_bar, format_bytes, format_duration, format_float, format_mib, format_percent
 from mxtop.models import FrameSnapshot
 
 WIDE_MIN_WIDTH = 110
@@ -55,8 +55,8 @@ def render_once(frame: FrameSnapshot, use_color: bool = True, width: int = 120) 
     lines.extend(
         [
             "",
-            "GPU  PID       USER          GPU-MEM   CPU%  HOST-MEM  COMMAND",
-            "---  --------  ------------  --------  ----  --------  ----------------",
+            "GPU  PID       USER          GPU-MEM   CPU%      TIME  HOST-MEM  COMMAND",
+            "---  --------  ------------  --------  ----  --------  --------  ----------------",
         ]
     )
     if frame.processes:
@@ -70,8 +70,9 @@ def render_once(frame: FrameSnapshot, use_color: bool = True, width: int = 120) 
                 f"{ellipsize(process.user, 12):<12}  "
                 f"{format_mib(process.gpu_memory_bytes):>8}  "
                 f"{format_percent(process.cpu_percent):>4}  "
+                f"{format_duration(process.runtime_seconds):>8}  "
                 f"{format_bytes(process.host_memory_bytes):>8}  "
-                f"{ellipsize(process.command or process.name, max(10, width - 67))}"
+                f"{ellipsize(process.command or process.name, max(10, width - 77))}"
             )
     else:
         lines.append("no GPU processes found")
