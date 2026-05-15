@@ -45,3 +45,6 @@ mxtop
 ```
 
 More usage and introduction, see [intro.md](INTRO.md)
+
+### 🔥News
+Thanks for great extended work [metax-mxtop](https://github.com/linkedlist771/metax-mxtop) with more features!
